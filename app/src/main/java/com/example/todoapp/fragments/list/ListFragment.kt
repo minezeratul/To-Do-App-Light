@@ -45,11 +45,11 @@ class ListFragment : Fragment(), SearchView.OnQueryTextListener {
         setupRecyclerview()
 
         // Observe LiveData
-        mToDoViewModel.getAllData.observe(viewLifecycleOwner, { data ->
+        mToDoViewModel.getAllData.observe(viewLifecycleOwner) { data ->
             mSharedViewModel.checkIfDatabaseEmpty(data)
             adapter.setData(data)
             binding.recyclerView.scheduleLayoutAnimation()
-        })
+        }
 
         // Set Menu
         setHasOptionsMenu(true)
